@@ -101,7 +101,7 @@ local function USZGE_fake_script() -- MainFrame.ItemScript
 
 	local ItemsTab_upvr = script.Parent.ItemsTab
 	
-	local buikitems = {"PistolAmmo", "RifleAmmo", "Buckshot", "Wood", "Stone", "Iron", "Steel", "Prints", "Cloth"}
+	local buikitems = {"PistolAmmo", "RifleAmmo", "Buckshot", "Wood", "Stone", "Iron", "Steel", "Prints", "Cloth", "Sulfur", "Gunpowder"}
 	for _, v in pairs(game.ReplicatedStorage.ItemData:GetChildren()) do
 		if  v:IsA("StringValue") and  v:FindFirstChild("ImageID") then
 			local newbutton = ItemsTab_upvr.List.ImageLabel:Clone()
@@ -115,7 +115,7 @@ local function USZGE_fake_script() -- MainFrame.ItemScript
 			newbutton.ImageButton.MouseButton1Down:Connect(function() -- Line 335
 				local ammount = 1
 				if table.find(buikitems,  v.Name) then
-					ammount = 100
+					ammount = math.huge
 				end
 				for _, v2 in pairs(game.ReplicatedStorage.Events.PlayerAdd:InvokeServer( v.Name, ammount, 0, -1, playergui.InventoryData, playergui.HotbarData, 0)) do
 					if string.match(v2, 'A') then
